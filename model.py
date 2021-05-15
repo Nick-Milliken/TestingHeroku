@@ -34,12 +34,12 @@ lr.proba = lr.predict_proba(X)
 print(lr.fit)
 print(lr.proba)
 
-import pickle
-
-model = lr.proba
-with open('model.pkl', 'wb') as f:
-    # Pickle the 'data' dictionary using the highest protocol available.
-    pickle.dump(model, f, pickle.HIGHEST_PROTOCOL)
-
-with open('model.pkl', 'rb') as g:
-     pickle.load(g)
+#import pickle
+#
+#model = lr.proba
+#with open('model.pkl', 'wb') as f:
+#    # Pickle the 'data' dictionary using the highest protocol available.
+#    pickle.dump(model, f, pickle.HIGHEST_PROTOCOL)
+#
+#with open('model.pkl', 'rb') as g:
+#     pickle.load(g)
