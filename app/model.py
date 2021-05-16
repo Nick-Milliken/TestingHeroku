@@ -32,9 +32,11 @@ app = Flask(__name__)
 #    return render_template('prediction.html', prediction=predictions)
 #
 
+predictions = [20,20,20,20]
+
 @app.route('/')
 def index():
-     return "<h1>Welcome to Geeks for Geeks</h1>"
+     return render_template('../template/index.html', prediction=predictions);
 
 
 from sklearn.linear_model import LogisticRegression 
@@ -70,8 +72,10 @@ lr = LogisticRegression(random_state = 42)
 lr.fit = lr.fit(X_train, y_train)
 lr.fit = lr.predict(X)
 lr.proba = lr.predict_proba(X)
-print(lr.fit)
-print(lr.proba)
+
+
+#print(lr.fit)
+#print(lr.proba)
 
 #import pickle
 #
