@@ -35,7 +35,7 @@ app = Flask(__name__)
 predictions = [20,20,20,20]
 
 @app.route('/')
-def home_view():
+def index():
      return "<h1>Welcome to my NightMare </h1>"
 #     return render_template('../template/index.html', prediction=predictions)
 
