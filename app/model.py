@@ -36,7 +36,7 @@ predictions = [20,20,20,20]
 
 @app.route('/')
 def index():
-     return render_template('../template/index.html', prediction=lr.proba)
+     return render_template('../template/index.html', prediction=predictions)
 
 
 from sklearn.linear_model import LogisticRegression 
