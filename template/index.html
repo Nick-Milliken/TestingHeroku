@@ -2,12 +2,4 @@
 
 {% block content %}
     <h1>{% block title %} Welcome to My Prediction {% endblock %}</h1>
-    {% for prediction in predictions %}
-	<a href="{{ url_for('prediction', prediction_id=prediction['id]) }}">
-	    <h2>{{ prediction['title'] }}</h2>
-	</a>
-	<span class="badge badge-primary">{{ prediction['created'] }}</span>
-	<hr>
-    {% idnfor %}
-{% endblock %}
 
