@@ -75,12 +75,12 @@ lr.proba = lr.predict_proba(X)
 
 @app.route('/')
 def index():
-    print("<h1>Welcome to my NightMare </h1>")
+    return "<h1>Welcome to my NightMare </h1>"
 #     return render_template("../index.html")
 
 @app.route('/table')
 def table():
     model = lr.proba
     model = tabulate(model, tablefmt='html')
-    return model
+    return <h1> model </h1>
 
