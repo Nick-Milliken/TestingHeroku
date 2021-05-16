@@ -38,16 +38,16 @@ app = Flask(__name__)
 #with open('model.pkl', 'wb') as f:
 #    pickle.dump(model, f, pickle.HIGHEST_PROTOCOL)
 
-with open('model.pkl', 'rb') as g:
-     pickle.load(g)
+#with open('model.pkl', 'rb') as g:
+#     pickle.load(g)
 
-import tabulate
-table = tabulate.table(g)
+#import tabulate
+#table = tabulate.table(g)
 
 @app.route('/')
 def index():
     # return "<h1>Welcome to my NightMare </h1>"
-     return render_template(index.html)
+     return render_template("index.html")
 
 
 from sklearn.linear_model import LogisticRegression 
