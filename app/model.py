@@ -88,5 +88,5 @@ def homeview():
 def table():
     model = lr.proba
     model = tabulate(model, tablefmt='html')
-    print(model) 
+    return model 
 
