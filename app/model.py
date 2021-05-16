@@ -32,12 +32,20 @@ app = Flask(__name__)
 #    return render_template('prediction.html', prediction=predictions)
 #
 
-predictions = [20,20,20,20]
+ #model = lr.proba
+ 84 with open('model.pkl', 'wb') as f:
+# Pickle the 'data' dictionary using the highest protocol available.
+#with open('model.pkl', 'wb') as f:
+#    pickle.dump(model, f, pickle.HIGHEST_PROTOCOL)
 
+with open('model.pkl', 'rb') as g:
+     pickle.load(g)
+import tabulate
+table = tabulate.table(g)
 @app.route('/')
 def index():
-     return "<h1>Welcome to my NightMare </h1>"
-#     return render_template('../template/index.html', prediction=predictions)
+    # return "<h1>Welcome to my NightMare </h1>"
+     return render_template('../template/index.html',table)
 
 
 from sklearn.linear_model import LogisticRegression 
@@ -82,8 +90,7 @@ lr.proba = lr.predict_proba(X)
 #
 #model = lr.proba
 #with open('model.pkl', 'wb') as f:
-#    # Pickle the 'data' dictionary using the highest protocol available.
 #    pickle.dump(model, f, pickle.HIGHEST_PROTOCOL)
-#
+
 #with open('model.pkl', 'rb') as g:
 #     pickle.load(g)
