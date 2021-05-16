@@ -34,7 +34,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-     return 'Index Page'
+     return "<h1>Welcome to Geeks for Geeks</h1>"
 
 
 from sklearn.linear_model import LogisticRegression 
