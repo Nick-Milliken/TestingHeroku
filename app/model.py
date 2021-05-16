@@ -1,4 +1,5 @@
 import sqlite3
+from tabulate import tabulate
 from flask import Flask, render_template
 from werkzeug.exceptions import abort
 
@@ -43,21 +44,6 @@ app = Flask(__name__)
 
 #import tabulate
 #table = tabulate.table(g)
-
-@app.route('/')
-def index():
-    # return "<h1>Welcome to my NightMare </h1>"
-     return render_template("index.html")
-
-
-from sklearn.linear_model import LogisticRegression 
-from sklearn.preprocessing import StandardScaler
-from sklearn.datasets import make_classification
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-import pandas as pd
-import numpy as np
-
 data = pd.read_csv("https://github.com/Nick-Milliken/deploy-ml/raw/main/ramen/ramen-ratings.csv")
 
 X = data.Stars
@@ -83,16 +69,18 @@ lr = LogisticRegression(random_state = 42)
 lr.fit = lr.fit(X_train, y_train)
 lr.fit = lr.predict(X)
 lr.proba = lr.predict_proba(X)
-
-
 #print(lr.fit)
 #print(lr.proba)
 
-#import pickle
-#
-#model = lr.proba
-#with open('model.pkl', 'wb') as f:
-#    pickle.dump(model, f, pickle.HIGHEST_PROTOCOL)
 
-#with open('model.pkl', 'rb') as g:
-#     pickle.load(g)
+@app.route('/')
+def index():
+    print("<h1>Welcome to my NightMare </h1>")
+#     return render_template("../index.html")
+
+@app.route('/table')
+def table():
+    model = lr.proba
+    model = tabulate(model, tablefmt='html')
+    return model
+
