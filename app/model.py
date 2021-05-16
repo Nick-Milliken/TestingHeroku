@@ -2,6 +2,13 @@ import sqlite3
 from tabulate import tabulate
 from flask import Flask, render_template
 from werkzeug.exceptions import abort
+from sklearn.linear_model import LogisticRegression 
+from sklearn.preprocessing import StandardScaler
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+import pandas as pd
+import numpy as np
 
 #def get_db_connection():
 #    conn = sqlite3.connect('database.db')
@@ -82,5 +89,5 @@ def index():
 def table():
     model = lr.proba
     model = tabulate(model, tablefmt='html')
-    return <h1> model </h1>
+    print(model) 
 
