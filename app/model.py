@@ -81,9 +81,8 @@ lr.proba = lr.predict_proba(X)
 
 
 @app.route('/')
-def index():
-    return "<h1>Welcome to my NightMare </h1>"
-#     return render_template("../index.html")
+def homeview():
+    return "<h1>Welcome to my NightMare</h1>"
 
 @app.route('/table')
 def table():
