@@ -17,7 +17,7 @@ def homeview():
     return "<h1>Welcome to my NightMare</h1>"
 
 @app.route('/prediction')
-def table():
+def prediction():
     with open('test_pickled_model.py', 'rb') as g:
         model = pickle.load(g)
         return model
