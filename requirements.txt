@@ -8,10 +8,8 @@ pyjson5
 pip
 virtualenv
 python-dotenv
-Flask==1.1.2
 Flask-Migrate==2.7.0
 Flask-SQLAlchemy==2.5.1
-gunicorn==20.1.0
 jsonschema==3.2.0
 jupyter==1.0.0
 MarkupSafe==1.1.1
