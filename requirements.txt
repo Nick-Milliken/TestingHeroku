@@ -30,6 +30,5 @@ SQLAlchemy==1.4.15
 sqlparse==0.4.1
 style==1.1.0
 tabulate
-virtualenv==20.4.3
 virtualenvwrapper==4.8.4
 Werkzeug==1.0.1
