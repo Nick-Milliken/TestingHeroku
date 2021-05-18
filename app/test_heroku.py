@@ -1,3 +1,12 @@
+from sklearn.linear_model import LogisticRegression 
+from sklearn.preprocessing import StandardScaler
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+from flask import Flask
+import pandas as pd
+import numpy as np
+
 app = Flask(__name__)
 
 
@@ -10,6 +19,6 @@ def homeview():
 @app.route('/prediction')
 def table():
     with open('test_pickled_model.py', 'rb') as g:
-	 model = pickle.load(g)
-	 model = model.head()
-	 return model
+        model = pickle.load(g)
+        model = model.head()
+        return model

@@ -1,4 +1,13 @@
-Django==3.2
+django
+gunicorn
+django-heroku
+pandas
+jupyter
+Flask
+pyjson5
+pip
+virtualenv
+python-dotenv
 django-heroku==0.3.1
 Flask==1.1.2
 Flask-Migrate==2.7.0
@@ -9,7 +18,6 @@ jupyter==1.0.0
 MarkupSafe==1.1.1
 notebook==6.3.0
 numpy==1.20.2
-pandas==1.2.4
 parso==0.8.2
 pbr==5.5.1
 pickleshare==0.7.5
