@@ -7,7 +7,7 @@ from flask import Flask
 import pandas as pd
 import numpy as np
 
-#app = Flask(__name__)
+app = Flask(__name__)
 
 
 data = pd.read_csv("https://github.com/Nick-Milliken/deploy-ml/raw/main/ramen/ramen-ratings.csv")
