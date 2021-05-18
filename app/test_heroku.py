@@ -20,5 +20,4 @@ def homeview():
 def table():
     with open('test_pickled_model.py', 'rb') as g:
         model = pickle.load(g)
-        model = model.head()
         return model
