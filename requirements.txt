@@ -1,4 +1,4 @@
-django
+#django
 gunicorn
 django-heroku
 pandas
@@ -7,9 +7,9 @@ Flask
 pyjson5
 pip
 virtualenv
-python-dotenv
-Flask-Migrate==2.7.0
-Flask-SQLAlchemy==2.5.1
+#python-dotenv
+#Flask-Migrate==2.7.0
+#Flask-SQLAlchemy==2.5.1
 jsonschema==3.2.0
 MarkupSafe==1.1.1
 notebook==6.3.0
@@ -19,7 +19,7 @@ pbr==5.5.1
 pickleshare==0.7.5
 postgres==3.0.0
 psycopg2==2.8.6
-psycopg2-binary==2.8.6
+#psycopg2-binary==2.8.6
 pyparsing==2.4.7
 python-editor==1.0.4
 requests==2.25.1
@@ -32,3 +32,8 @@ style==1.1.0
 tabulate
 virtualenvwrapper==4.8.4
 Werkzeug==1.0.1
+
+Flask-Migrate==2.5.2
+Flask-SQLAlchemy==2.4.0
+psycopg2-binary==2.8.3
+python-dotenv==0.10.3
