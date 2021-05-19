@@ -3,10 +3,11 @@
 #from sklearn.datasets import make_classification
 #from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
-from flask import Flask, request
+from flask import Flask, requesti, redirect, url_for
 import pandas as pd
 import numpy as np
 import pickle 
+
 app = Flask(__name__)
 
 with open('model.pkl', 'rb') as g:
@@ -29,14 +30,18 @@ def homeview():
 #def json_test():
 #    return {'prediction':.05}
 
-@app.route('/predict')
+@app.route('/predict', methods = ['POST', 'GET'])
 def predict():
     if request.method == 'POST':
        # the_data = request.get_json(force=True)
        # newdata = the_data['newdata']
         prediction = pipe.predict([newdata])
-        return{'prediction': prediction.tolist()}   
+        return{'prediction': prediction.tolist()}
+    else:
+       prediction = pipe.args.get('nm')
+       return redirect(url_for('success', name = prediction))   
 
-
+if __name__ == '__main__':
+   app.run(debug = True)
 
 
