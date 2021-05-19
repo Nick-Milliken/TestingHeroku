@@ -8,6 +8,7 @@ from sklearn.pipeline import make_pipeline
 import pickle
 import pandas as pd
 import numpy as np
+
 data = pd.read_csv("https://github.com/Nick-Milliken/deploy-ml/raw/main/ramen/ramen-ratings.csv")
 newdata = data.tail(516)
 origin_data = data.head(2064)
