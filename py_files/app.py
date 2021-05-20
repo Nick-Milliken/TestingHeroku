@@ -9,7 +9,7 @@ def get_db_connection():
 
 def get_prediction(prediction_id):
     conn = get_db_connection()
-    prediction = conn.execute('SELECT * FROM predictions').fetchall()
+    prediction = conn.execute('SELECT * FROM prediction').fetchall()
     conn.close()
     if prediction is None:
         abort(404)
@@ -20,7 +20,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     conn = get_db_connection()
-    predictions = conn.execute('SELECT * FROM predictions').fetchall()
+    prediction = conn.execute('SELECT * FROM prediction').fetchall()
     conn.close()
     if prediction is None:
        abort(404)
@@ -29,4 +29,4 @@ def index():
 @app.route('/prediction_id')
 def prediction(prediction_id):
     prediction = get_prediction(prediction_id)
-    return render_template('prediction.html', prediction=predictions)
+    return render_template('prediction.html', prediction=prediction)

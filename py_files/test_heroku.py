@@ -1,47 +1,40 @@
-#from sklearn.linear_model import LogisticRegression 
-#from sklearn.preprocessing import StandardScaler
-#from sklearn.datasets import make_classification
-#from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
-from flask import Flask, requesti, redirect, url_for
+from flask import Flask
+import requests
 import pandas as pd
 import numpy as np
 import pickle 
+from flask import render_template
 
 app = Flask(__name__)
 
-with open('model.pkl', 'rb') as g:
-        pipe = pickle.load(g)
-        
+from newdata import newdata as newdata
 
-data = pd.read_csv("https://github.com/Nick-Milliken/deploy-ml/raw/main/ramen/ramen-ratings.csv") 
-
-newdata = data.tail(516)
-
+with open('Probability.pkl', 'rb') as g:
+       pipe = pickle.load(g)
+print(pipe)        
 @app.route('/')
 def index():
-    return 'Index Page'
+    return '<p1>Index Page</p1>'
 
 @app.route('/hello')
 def homeview():
-    return "<h1>Welcome to my NightMare</h1>"
+     
+    return 'Hello, World!'
 
-#@app.route('/json_test')
-#def json_test():
-#    return {'prediction':.05}
+@app.route('/json_test')
+def json_test():
+    return {'prediction':.05}
 
-@app.route('/predict', methods = ['POST', 'GET'])
+@app.route('/predict', methods = ['GET','POST'])
 def predict():
-    if request.method == 'POST':
-       # the_data = request.get_json(force=True)
-       # newdata = the_data['newdata']
-        prediction = pipe.predict([newdata])
-        return{'prediction': prediction.tolist()}
-    else:
-       prediction = pipe.args.get('nm')
-       return redirect(url_for('success', name = prediction))   
+        
+        prediction = pipe.predict_proba(newdata[['Stars']])
+        prediction = prediction.reshape(1,-1)
+        prediction = prediction.tolist() 
+       # output = pd.DataFrame({'Country': newdata.Country, 'Brand':newdata.Brand, 'Probability of 5.00 Stars':prediction})
+       # print(output)
+        return {'prediction.html': prediction}
 
-if __name__ == '__main__':
-   app.run(debug = True)
 
 

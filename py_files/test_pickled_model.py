@@ -6,18 +6,24 @@ from sklearn.pipeline import Pipeline
 import pickle 
 import pandas as pd
 import numpy as np
+import json
 
-data = pd.read_csv("https://github.com/Nick-Milliken/deploy-ml/raw/main/ramen/ramen-ratings.csv")
-origin_data = data.head(2064)
-newdata = data.tail(516)
+from newdata import newdata 
+
+print(newdata.head())
 
 with open('model.pkl', 'rb') as g:
     pipe = pickle.load(g)
-#print(pipe)
-Probability = list(pipe)
+
+Probability = pipe.predict_proba(newdata['Stars'])
+
 
 predictions = pd.DataFrame({'Country':newdata.Country, 'Brand':newdata.Brand, 'Probability of 5.00':Probability})
 print(predictions)
 
+with open('Probability.pkl', 'wb') as p:
+    pickle.dump(Probability,p)
 
+with open('Probability.pkl', 'rb') as prob:
+    pickle.load(prob)
 
