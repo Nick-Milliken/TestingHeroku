@@ -15,8 +15,6 @@ origin_data = data.head(2064)
 
 
 X = origin_data.Stars
-
-
 X = X.replace('Unrated', np.NaN)
 X = pd.to_numeric(X)
 X = np.nan_to_num(X)
@@ -30,16 +28,17 @@ X_train, X_test, y_train, y_test = train_test_split(X, y,
 pipe = Pipeline(steps=[('scaler', StandardScaler()), ('lr', LogisticRegression())])
 # The pipeline can be used as any other estimator
 # and avoids leaking the test set into the train set
-pipe.fit(X_train, y_train)
+pipe = pipe.fit(X_train, y_train)
 pipe.score(X_test, y_test)
 pred = pipe.predict(X_train)
 model = pipe
 Country = pipe.predict(X)
-Probability = list(pipe.predict_proba(X)[:,36])
-Output = pd.DataFrame({'Country':origin_data.Country, 'Brand':origin_data.Brand,'Probability of 5.00 Stars':Probability})
-Output.head()
+Probability = list(pipe.predict(X))
+Output = pd.DataFrame({'Stars':origin_data.Stars, 'Brand':origin_data.Brand,'Country_Predicted':Probability, 'Country_Actual':origin_data.Country})
+output = Output.head()
+print(output)
 
-model = Probability
+model = model
 
 with open('model.pkl', 'wb') as f:
     # Pickle the 'data' dictionary using the highest protocol available.

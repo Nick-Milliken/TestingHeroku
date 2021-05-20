@@ -24,13 +24,12 @@ def homeview():
 
 @app.route('/json_test')
 def json_test():
-    return {'prediction':.05}
+    return {'test_flask.py'}
 
 @app.route('/predict', methods = ['GET','POST'])
 def predict():
-        
+                
         prediction = pipe.predict_proba(newdata[['Stars']])
-        prediction = prediction.reshape(1,-1)
         prediction = prediction.tolist() 
        # output = pd.DataFrame({'Country': newdata.Country, 'Brand':newdata.Brand, 'Probability of 5.00 Stars':prediction})
        # print(output)

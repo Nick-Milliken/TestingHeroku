@@ -15,10 +15,10 @@ print(newdata.head())
 with open('model.pkl', 'rb') as g:
     pipe = pickle.load(g)
 
-Probability = pipe.predict_proba(newdata['Stars'])
+Probability = pipe.predict(newdata.Stars)
 
 
-predictions = pd.DataFrame({'Country':newdata.Country, 'Brand':newdata.Brand, 'Probability of 5.00':Probability})
+predictions = pd.DataFrame({'Country':newdata.Country, 'Brand':newdata.Brand, 'Predicted_Country':Probability})
 print(predictions)
 
 with open('Probability.pkl', 'wb') as p:
