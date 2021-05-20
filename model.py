@@ -28,21 +28,18 @@ X_train, X_test, y_train, y_test = train_test_split(X, y,
 pipe = Pipeline(steps=[('scaler', StandardScaler()), ('lr', LogisticRegression())])
 # The pipeline can be used as any other estimator
 # and avoids leaking the test set into the train set
-pipe = pipe.fit(X_train, y_train)
+pipe.fit(X_train, y_train)
 pipe.score(X_test, y_test)
 pred = pipe.predict(X_train)
-model = pipe
+model = pipe.fit(X_train, y_train)
 Country = pipe.predict(X)
 Probability = list(pipe.predict(X))
 Output = pd.DataFrame({'Stars':origin_data.Stars, 'Brand':origin_data.Brand,'Country_Predicted':Probability, 'Country_Actual':origin_data.Country})
 output = Output.head()
 print(output)
 
-model = model
-
 with open('model.pkl', 'wb') as f:
     # Pickle the 'data' dictionary using the highest protocol available.
     pickle.dump(model, f, pickle.HIGHEST_PROTOCOL)
 
-#with open('model.pkl', 'rb') as g:
-#    pickle.load(g)
+print(Probability)
