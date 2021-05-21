@@ -1,2 +1,2 @@
-web: gunicorn wsgi:test_heroku
+web: gunicorn wsgi:app
 
