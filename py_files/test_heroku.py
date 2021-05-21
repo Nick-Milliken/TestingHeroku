@@ -45,11 +45,11 @@ def json_test():
 @app.route('/predict', methods = ['GET','POST'])
 def predict():
     
-    prediction = pipe.predict(X)
+    result = pipe.predict(X)
      
-    output = pd.DataFrame({'Country': newdata.iloc[4], 'Brand':newdata.iloc[1], 'Predicted Country':prediction})
+    output = pd.DataFrame({'Country': newdata.iloc[4], 'Brand':newdata.iloc[1], 'Predicted Country':result})
     print(output)
-    return render_template('prediction.html')
+    return render_template('prediction.html',prediction=result)
 
 
 
